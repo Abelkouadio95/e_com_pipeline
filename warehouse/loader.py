@@ -1,4 +1,3 @@
-# warehouse/loader.py
 import duckdb
 import pandas as pd
 
