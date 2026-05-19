@@ -1,6 +1,7 @@
 import requests
 import json
 from datetime import datetime, timezone
+from warehouse.minio_client import upload_json, BRONZE
 
 RAW_PATH = "data/raw/products"
 
@@ -21,13 +22,17 @@ def fetch_products():
         "record_count": len(response.json()),
         "data": products
     }
+    # Sauvegarde locale (optionnelle)
     
-    path = f"{RAW_PATH}/{datetime.today().date()}.json"
-    with open(path, "w") as f:
-        json.dump(data, f, indent=4)
+    #path = f"{RAW_PATH}/{datetime.today().date()}.json"
+    #with open(path, "w") as f:
+    #    json.dump(data, f, indent=4)
 
-    print(f"✅ Produits ingérés : {data['record_count']} articles → {path}")
-    return path
-
-if __name__ == "__main__":
-    fetch_products()
+    #print(f"✅ Produits ingérés : {data['record_count']} articles → {path}")
+    #return path 
+    
+    # Upload dans MinIO
+    key = f"products/{datetime.today().date()}.json"
+    upload_json(data, BRONZE, key)
+    print(f"✅ Produits ingérés : {data['record_count']} articles → {BRONZE}/{key}")
+    return key
