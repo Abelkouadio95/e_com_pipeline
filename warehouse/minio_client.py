@@ -33,8 +33,9 @@ def s3_path(layer: str, filename: str) -> str:
     """Construit un chemin S3 propre"""
     return f"s3://{BUCKET}/{layer}/{filename}"
 
+#Upload un dict Python comme JSON dans MinIO
 def upload_json(data: dict, layer: str, key: str):
-    """Upload un dict Python comme JSON dans MinIO"""
+    
     import json
     s3 = get_s3_client()
     s3.put_object(
