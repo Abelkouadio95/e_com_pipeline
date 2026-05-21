@@ -1,0 +1,9 @@
+zone,country_code,cost_usd,avg_days
+A,US,5.99,3
+A,FR,12.99,7
+A,MA,18.99,10
+A,DE,11.99,6
+B,US,8.99,4
+B,FR,15.99,8
+B,MA,22.99,12
+B,DE,14.99,7
