@@ -1,0 +1,5 @@
+category,target_margin,shipping_zone,avg_return_rate
+electronics,0.15,A,0.08
+jewelery,0.45,B,0.03
+men's clothing,0.35,A,0.12
+women's clothing,0.40,A,0.15
