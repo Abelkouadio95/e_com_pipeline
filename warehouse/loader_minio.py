@@ -40,6 +40,6 @@ def load_all():
             SELECT * FROM read_parquet('{path}')
         """)
         count = con.execute(f"SELECT COUNT(*) FROM {table}").fetchone()[0]
-        print(f"✅ {table} chargé depuis MinIO : {count} lignes")
+        print(f"{table} chargé depuis MinIO : {count} lignes")
 
     con.close()
