@@ -2,14 +2,13 @@ import requests, json, os
 from datetime import datetime, timezone
 from warehouse.minio_client import upload_json, BRONZE
 
-APP_ID = "TON_APP_ID_ICI"
+APP_ID = "" # inscription gratuite sur openexchangerates.org pour obtenir une clé API (app_id) et accéder aux taux de change en temps réel.
 
 def fetch_rates():
-    #os.makedirs("data/raw/rates", exist_ok=True)
     
     response = requests.get(
         "https://openexchangerates.org/api/latest.json",
-        params={"app_id": 'c0dcf9d4184142ca88f1a6d149b786d3'},
+        params={"app_id": APP_ID},
         timeout=10
     )
     response.raise_for_status()
