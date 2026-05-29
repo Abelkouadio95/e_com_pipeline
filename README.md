@@ -218,11 +218,10 @@ Générer la Fernet Key :
 python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
 ```
 
-### 3. Générer les données statiques et historiques
+### 3. Générer les données historiques
 
 ```bash
-# À exécuter une seule fois
-python scripts/generate_static_files.py
+# À exécuter une seule fois ou  utliser directement la base sqlite present dans le dossier data/historical
 python scripts/generate_historical_db.py
 ```
 
@@ -250,7 +249,7 @@ Depuis l'UI Airflow :
 Ou depuis le terminal :
 
 ```bash
-docker exec <scheduler_container> airflow dags trigger e_com_pipeline
+docker exec <nom ou ID du conteneur Airflow Scheduler> airflow dags trigger e_com_pipeline
 ```
 
 ### 6. Lancer le dashboard
