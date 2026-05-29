@@ -101,7 +101,7 @@ ecommerce-lake/ (bucket MinIO)
 | `categories_margins.csv` | CSV | Marge cible et zone de livraison par catégorie |
 | `shipping_costs.csv` | CSV | Coûts de livraison par zone et pays |
 | `objectifs_Q1_2025.xlsx` | Excel (2 onglets) | Objectifs CA et budget marketing Q1 |
-| `orders_history.db` | SQLite | 6 000 commandes simulées sur 12 mois |
+| `orders_history.db` | SQLite | 10 000 commandes simulées sur 12 mois |
 
 ---
 
@@ -187,15 +187,12 @@ month | category | ca_historique | nb_commandes
 ### 1. Cloner le projet
 
 ```bash
-git clone https://github.com/ton-username/ecommerce-pipeline.git
-cd ecommerce-pipeline
+git clone https://github.com/Abelkouadio95/e_com_pipeline.git
+cd e_com_pipeline
 ```
 
 ### 2. Configurer les variables d'environnement
 
-```bash
-cp .env.example .env
-```
 
 Édite le `.env` :
 
@@ -205,13 +202,11 @@ AIRFLOW_UID=1000
 AIRFLOW_PROJ_DIR=.
 FERNET_KEY=           # générer avec la commande ci-dessous
 
-# API
-OPEN_EXCHANGE_APP_ID= # inscription gratuite sur openexchangerates.org
 
 # MinIO
 MINIO_ENDPOINT=http://minio:9000
-MINIO_ACCESS_KEY=minioadmin
-MINIO_SECRET_KEY=minioadmin
+MINIO_ACCESS_KEY=minioadmin01
+MINIO_SECRET_KEY=minioadmin01
 
 # Dépendances pip
 _PIP_ADDITIONAL_REQUIREMENTS=requests pandas duckdb openpyxl faker boto3 s3fs
@@ -243,19 +238,19 @@ docker compose ps
 | Service | URL | Credentials |
 |---|---|---|
 | Airflow UI | http://localhost:8080 | airflow / airflow |
-| MinIO UI | http://localhost:9001 | minioadmin / minioadmin |
+| MinIO UI | http://localhost:9001 | minioadmin01 / minioadmin01 |
 
 ### 5. Lancer le pipeline
 
 Depuis l'UI Airflow :
-1. Active le DAG `ecommerce_pipeline`
+1. Active le DAG `e_com_pipeline`
 2. Clique sur **Trigger DAG**
 3. Surveille l'exécution dans la vue **Graph**
 
 Ou depuis le terminal :
 
 ```bash
-docker exec <scheduler_container> airflow dags trigger ecommerce_pipeline
+docker exec <scheduler_container> airflow dags trigger e_com_pipeline
 ```
 
 ### 6. Lancer le dashboard
@@ -300,8 +295,7 @@ ecommerce-pipeline/
 │   └── app.py                      ← Streamlit 4 pages
 │
 ├── scripts/
-│   ├── generate_historical_db.py   ← Génère 6000 commandes SQLite
-│   └── generate_static_files.py    ← Génère CSV et Excel de référence
+│   ├── generate_historical_db.py   ← Génère 10000 commandes SQLite
 │
 ├── data/
 │   ├── static/                     ← CSV de référence

@@ -2,7 +2,7 @@ import requests, json, os
 from datetime import datetime, timezone
 from warehouse.minio_client import upload_json, BRONZE
 
-APP_ID = "" # inscription gratuite sur openexchangerates.org pour obtenir une clé API (app_id) et accéder aux taux de change en temps réel.
+APP_ID = "c0dcf9d4184142ca88f1a6d149b786d3" # inscription gratuite sur openexchangerates.org pour obtenir une clé API (app_id) et accéder aux taux de change en temps réel.
 
 def fetch_rates():
     
