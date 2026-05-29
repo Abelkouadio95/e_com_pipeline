@@ -116,7 +116,7 @@ ingest_rates_api     ──┤
 ingest_local_sources ──┘
 ```
 
-**Scheduling :** toutes les 6 heures (`0 */6 * * *`)
+**Scheduling : ** toutes les 6 heures (`0 */6 * * *`)
 
 ### Détail des tâches
 
